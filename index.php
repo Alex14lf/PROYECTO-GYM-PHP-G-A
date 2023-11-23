@@ -2,16 +2,17 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Ejercicio</title>
-        <link rel="stylesheet" href="css/style.css">
+        <title>Demonios's Gym</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     </head>
-    <body>
+    <body class="bodyLogin">
         <div class="contenido">
             <!-- Section: Design Block -->
             <section class="">
                 <!-- Jumbotron -->
-                <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+                <div class="px-4 py-5 px-md-5 text-center text-lg-start">
                     <div class="container">
                         <div class="row gx-lg-5 align-items-center">
                             <div class="col-lg-6 mb-5 mb-lg-0">
