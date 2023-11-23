@@ -38,7 +38,7 @@
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="user">User</label>
                                                 <input type="text" id="user" class="form-control" />
-                                                
+
                                             </div>
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="password">Password</label>
