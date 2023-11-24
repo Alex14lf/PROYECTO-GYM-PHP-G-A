@@ -4,3 +4,15 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.contenido{
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+}
+.index__p{
+    color: white;
+    text-align: justify;
+    
+}
+.form-control{
+    border: 2px solid dodgerblue;
+}

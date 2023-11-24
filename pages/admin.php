@@ -1,3 +1,14 @@
+<?php
+session_start();
+//Si la sesion no tiene un usuario devuelve a la pagina de login
+if (!isset($_SESSION["usuario"])) {
+    header("Location: ../index.php");
+}
+else{
+    $user = $_SESSION["usuario"];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -11,8 +22,9 @@
         <link rel="shortcut icon" href="../assets/images/logo.png" type="image/x-icon">
     </head>
     <body>
+        
         <h1>ADMIN</h1>
-
+        <p>¿Que deseas hacer</p>
         <a href="../index.php">A index</a>
         <a href="./adminusers.php">A administracion de usuarios</a>
         <a href="./adminclass.php">A administraciobn de clases</a>
