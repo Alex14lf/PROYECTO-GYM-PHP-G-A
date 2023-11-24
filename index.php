@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -22,7 +18,7 @@ session_start();
                             <div class="col-lg-6 mb-5 mb-lg-0">
                                 <h1 class="my-5 display-3 fw-bold ls-tight text-light">
                                     Desata tu Poder en <br />
-                                    <span class="text-primary">Demonios Gym</span>
+                                    <span class="text-primary">Demonios's Gym</span>
                                 </h1>
                                 <p class="index__p">
                                 ¡Bienvenido/a a Demonios Gym, donde tus metas fitness toman vida! En este santuario del entrenamiento, te invitamos a liberar tu verdadero potencial y desatar la fuerza que llevas dentro. Nuestro equipo de entrenadores expertos está aquí para guiarte en cada paso de tu viaje, ya sea que estés buscando esculpir tu cuerpo, aumentar tu resistencia o simplemente mantenerte en forma. En Demonios Gym, la determinación y el espíritu competitivo se combinan para crear un ambiente único donde cada entrenamiento se convierte en una victoria personal. ¡Prepárate para enfrentar tus desafíos con valentía y alcanzar nuevas alturas en Demonios Gym!
@@ -32,7 +28,7 @@ session_start();
                             <div class="col-lg-6 mb-5 mb-lg-0">
                                 <div class="card">
                                     <div class="card-body py-5 px-md-5">
-                                        <form action="pages/validarLogin.php" method="POST">
+                                        <form action="./pages/validarLogin.php" method="POST">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="user">Usuario</label>
                                                 <input type="text" id="user" class="form-control" />
