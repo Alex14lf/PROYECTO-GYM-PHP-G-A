@@ -21,7 +21,7 @@
                                     <span class="text-primary">Demonios's Gym</span>
                                 </h1>
                                 <p class="index__p">
-                                ¡Bienvenido/a a Demonios Gym, donde tus metas fitness toman vida! En este santuario del entrenamiento, te invitamos a liberar tu verdadero potencial y desatar la fuerza que llevas dentro. Nuestro equipo de entrenadores expertos está aquí para guiarte en cada paso de tu viaje, ya sea que estés buscando esculpir tu cuerpo, aumentar tu resistencia o simplemente mantenerte en forma. En Demonios Gym, la determinación y el espíritu competitivo se combinan para crear un ambiente único donde cada entrenamiento se convierte en una victoria personal. ¡Prepárate para enfrentar tus desafíos con valentía y alcanzar nuevas alturas en Demonios Gym!
+                                    ¡Bienvenido/a a Demonios Gym, donde tus metas fitness toman vida! En este santuario del entrenamiento, te invitamos a liberar tu verdadero potencial y desatar la fuerza que llevas dentro. Nuestro equipo de entrenadores expertos está aquí para guiarte en cada paso de tu viaje, ya sea que estés buscando esculpir tu cuerpo, aumentar tu resistencia o simplemente mantenerte en forma. En Demonios Gym, la determinación y el espíritu competitivo se combinan para crear un ambiente único donde cada entrenamiento se convierte en una victoria personal. ¡Prepárate para enfrentar tus desafíos con valentía y alcanzar nuevas alturas en Demonios Gym!
                                 </p>
                             </div>
 
@@ -31,12 +31,12 @@
                                         <form action="./pages/validarLogin.php" method="POST">
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="user">Usuario</label>
-                                                <input type="text" id="user" class="form-control" />
+                                                <input type="text" id="user" name="user" class="form-control" />
 
                                             </div>
                                             <div class="form-outline mb-4">
                                                 <label class="form-label" for="password">Contraseña</label>
-                                                <input type="password" id="password" class="form-control" />
+                                                <input type="password" id="password" name="password" class="form-control" />
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-block mb-4">Acceder</button>
                                         </form>

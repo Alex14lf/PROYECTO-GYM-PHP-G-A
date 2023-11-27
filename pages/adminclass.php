@@ -3,8 +3,7 @@ session_start();
 //Si la sesion no tiene un usuario devuelve a la pagina de login
 if (!isset($_SESSION["usuario"])) {
     header("Location: ../index.php");
-}
-else{
+} else {
     $user = $_SESSION["usuario"];
 }
 ?>
