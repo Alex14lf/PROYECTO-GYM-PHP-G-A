@@ -1,11 +1,11 @@
 <?php
-session_start();
+//session_start();
 //Si la sesion no tiene un usuario devuelve a la pagina de login
-if (!isset($_SESSION["usuario"])) {
-    header("Location: ../index.php");
-} else {
-    $user = $_SESSION["usuario"];
-}
+//if (!isset($_SESSION["usuario"])) {
+//    header("Location: ../index.php");
+//} else {
+//    $user = $_SESSION["usuario"];
+//}
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +22,89 @@ if (!isset($_SESSION["usuario"])) {
     </head>
     <body>
         <div class="admin__container">
-            <h1>Bienvenido <?php $user ?></h1>
-            <p>¿Que deseas hacer hoy?</p>
-            <a href="../index.php">A index</a>
-            <a href="./adminusers.php">A administracion de usuarios</a>
-            <a href="./adminclass.php">A administraciobn de clases</a>
+            <?php
+            try {
+                //Se crea la conexión con la base de datos
+                include("funciones.php");
+                $bd = ConectarBd();
+                //Se construye la consulta y se guarda en una variable
+                $consulta = $bd->prepare("SELECT * from usuarios WHERE rol=:rol");
+                $consulta->execute(array(":rol" => 1));
+                //Se cierra la conexión
+                $bd = null;
+            } catch (Exception $ex) {
+                echo "Error con la base de datos: " . $e->getMessage();
+            }
+            ?>
+            <div class="container mt-5">
+                <div class="row"> 
+                    <div class="col-md-8">
+                        <table class="table" >
+                            <thead class="table-primary" >
+                                <tr>
+                                    <th>Dni</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Telefono</th>
+                                    <th>Rol</th>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                foreach ($consulta as $user) {
+                                    echo "<tr>";
+                                        echo "<td>" . $user["DNI"] . "</td>";
+                                        echo "<td>" . $user["Nombre"] . "</td>";
+                                        echo "<td>" . $user["Apellidos"] . "</td>";
+                                        echo "<td>" . $user["Telefono"] . "</td>";
+                                        echo "<td>" . $user["Rol"] . "</td>";
+                                        echo "<td>" . $user["Usuario"] . "</td>";
+                                        echo "<td>" . $user["Contraseña"] . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+                <div class="row"> 
+                    <div class="col-md-8">
+                        <table class="table" >
+                            <thead class="table-primary" >
+                                <tr>
+                                    <th>Dni</th>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Telefono</th>
+                                    <th>Rol</th>
+                                    <th>Usuario</th>
+                                    <th>Contraseña</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+                                foreach ($consulta as $user) {
+                                    echo "<tr>";
+                                        echo "<td>" . $user["DNI"] . "</td>";
+                                        echo "<td>" . $user["Nombre"] . "</td>";
+                                        echo "<td>" . $user["Apellidos"] . "</td>";
+                                        echo "<td>" . $user["Telefono"] . "</td>";
+                                        echo "<td>" . $user["Rol"] . "</td>";
+                                        echo "<td>" . $user["Usuario"] . "</td>";
+                                        echo "<td>" . $user["Contraseña"] . "</td>";
+                                    echo "</tr>";
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>  
+            </div>
         </div>
-
-
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -8,9 +8,9 @@
         <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
     </head>
     <body class="bodyLogin">
-        <div class="">
+        <div>
             <!-- Section: Design Block -->
-            <section class="">
+            <section>
                 <!-- Jumbotron -->
                 <div class="px-4 py-5 px-md-5 text-center text-lg-start">
                     <div class="container">
