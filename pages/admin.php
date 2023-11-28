@@ -32,18 +32,19 @@
                 $consulta->execute(array(":rol" => 1));
                 //Se cierra la conexión
                 $bd = null;
-            } catch (Exception $ex) {
+            } catch (Exception $e) {
                 echo "Error con la base de datos: " . $e->getMessage();
             }
             ?>
             <div class="container mt-5">
                 <div class="row"> 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
+                        <h1>USUARIOS DEL GYM</h1>
                         <table class="table" >
                             <thead class="table-primary" >
                                 <tr>
                                     <th>Dni</th>
-                                    <th>Nombres</th>
+                                    <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Telefono</th>
                                     <th>Rol</th>
@@ -62,16 +63,15 @@
                                         echo "<td>" . $user["Telefono"] . "</td>";
                                         echo "<td>" . $user["Rol"] . "</td>";
                                         echo "<td>" . $user["Usuario"] . "</td>";
-                                        echo "<td>" . $user["Contraseña"] . "</td>";
+                                        echo "<td>" . $user["Password"] . "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
                             </tbody>
                         </table>
                     </div>
-                </div>  
-                <div class="row"> 
-                    <div class="col-md-8">
+                    <div class="col-md-6">
+                        <h1>CLASES DEL GYM</h1>
                         <table class="table" >
                             <thead class="table-primary" >
                                 <tr>

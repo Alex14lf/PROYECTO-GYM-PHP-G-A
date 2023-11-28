@@ -4,10 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.admin__container{
-    width: 920px;
-    maragin: auto;
-}
+
 .contenido{
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 1rem;
@@ -19,4 +16,8 @@
 }
 .form-control{
     border: 2px solid dodgerblue;
+}
+
+.container{
+    display: flex;
 }
