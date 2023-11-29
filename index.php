@@ -40,6 +40,13 @@
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-block mb-4">Acceder</button>
                                         </form>
+                                        <p class="error_login">
+                                            <?php
+                                            if (isset($_GET["login"]) && $_GET["login"] == "incorrecto") {
+                                                echo "Usuario o contraseña incorrecto";
+                                            }
+                                            ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

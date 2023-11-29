@@ -1,15 +1,18 @@
 <?php
 
-if (!$_SERVER["REQUEST_METHOD"] == "POST") {
-    header("Location: ../index.php");
-} else {
-    if (isset($_POST["user"]) && !empty($_POST["user"])) {
-        $user = $_POST["user"];
-    }
-    if (isset($_POST["password"])) {
-        $password = $_POST["password"];
-    }
+if (isset($_POST["user"]) && !empty($_POST["user"])) {
+    $user = $_POST["user"];
+    $usuarioExistente = true;
 }
+if (isset($_POST["password"]) && !empty($_POST["user"])) {
+    $password = $_POST["password"];
+    $passwordExistente = true;
+}
+
+if (!$passwordExistente || !$usuarioExistente) {
+    header("location:../index.php");
+}
+
 
 try {
     //Se crea la conexión con la base de datos
@@ -18,28 +21,29 @@ try {
     //Se construye la consulta y se guarda en una variable
     $consulta = $bd->prepare("SELECT * from usuarios WHERE usuario=:usuario AND password=:password");
     $consulta->execute(array(":usuario" => $user, ":password" => $password));
+    
+    //Realizar busqueda
+    if($consulta){
+        foreach ($consulta as $fila) { //ENTRA SOLO SI EXISTE EL USUARIO Y CONTRASEÑA
+            if ($fila["Usuario"] == $user && $fila["Password"] == $password) {
+                session_start();
+                $_SESSION['usuario'] = $usuario;
+                $_SESSION['password'] = $password;
+                if ($fila["Rol"] == 1) {
+                    header("location:admin.php");
+                } else {
+                    if ($fila["Rol"] == 2) {
+                        header("location:users.php");
+                    }
+                }
+            }
+        }
+    }else{
+        header("Location:../index.php?login=incorrecto");
+    }
     //Se cierra la conexión
     $bd = null;
 } catch (Exception $e) {
     echo "Error con la base de datos: " . $e->getMessage();
 }
-
-foreach ($consulta as $fila) {
-    if ($fila["Usuario"] == $user && $fila["Password"] == $password) {
-        if ($fila["Rol"] == 1) {
-            header("location:admin.php");
-        } else {
-            if ($fila["Rol"] == 2) {
-                header("location:users.php");
-            }
-        }
-    }
-    
-//    echo $user["DNI"];
-//    echo $user["Nombre"];
-//    echo $user["Apellidos"];
-}
-//if ($fila["Usuario"] != $user || $fila["Password"] != $password) {
-//        header("location:../index.php?login=incorrecto");
-//    }
 ?>
