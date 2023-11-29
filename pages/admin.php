@@ -1,11 +1,8 @@
 <?php
-//session_start();
-//Si la sesion no tiene un usuario devuelve a la pagina de login
-//if (!isset($_SESSION["usuario"])) {
-//    header("Location: ../index.php");
-//} else {
-//    $user = $_SESSION["usuario"];
-//}
+session_start();
+if(!isset($_SESSION["user"]) && !isset($_SESSION["password"])){
+    header("Location:../index.php");
+}
 ?>
 
 <!DOCTYPE html>
