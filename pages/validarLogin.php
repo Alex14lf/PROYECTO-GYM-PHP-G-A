@@ -13,7 +13,6 @@ if (!$passwordExistente || !$usuarioExistente) {
     header("location:../index.php");
 }
 
-
 try {
     //Se crea la conexión con la base de datos
     include("funciones.php");
@@ -21,24 +20,16 @@ try {
     //Se construye la consulta y se guarda en una variable
     $consulta = $bd->prepare("SELECT * from usuarios WHERE usuario=:usuario AND password=:password");
     $consulta->execute(array(":usuario" => $user, ":password" => $password));
-    
-    //Realizar busqueda
-    if($consulta){
-        foreach ($consulta as $fila) { //ENTRA SOLO SI EXISTE EL USUARIO Y CONTRASEÑA
-            if ($fila["Usuario"] == $user && $fila["Password"] == $password) {
-                session_start();
-                $_SESSION['usuario'] = $usuario;
-                $_SESSION['password'] = $password;
-                if ($fila["Rol"] == 1) {
-                    header("location:admin.php");
-                } else {
-                    if ($fila["Rol"] == 2) {
-                        header("location:users.php");
-                    }
-                }
-            }
-        }
-    }else{
+    if (comprobarUsuario($user, $password)) {
+        session_start();
+        $_SESSION["usuario"] = $user;
+        $_SESSION["contraseña"] = $password;
+        if(ComprobarRol($user)==1){
+            header("Location:admin.php");
+        }else if(ComprobarRol($user)==2){
+            header("Location:users.php");
+        };
+    } else {
         header("Location:../index.php?login=incorrecto");
     }
     //Se cierra la conexión
@@ -46,4 +37,6 @@ try {
 } catch (Exception $e) {
     echo "Error con la base de datos: " . $e->getMessage();
 }
+
+
 ?>

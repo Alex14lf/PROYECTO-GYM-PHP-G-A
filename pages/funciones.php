@@ -8,4 +8,32 @@ function ConectarBd() {
     return $bd;
 }
 
+function comprobarUsuario($user, $password) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("SELECT * from usuarios WHERE usuario=:usuario AND password=:password");
+        $consulta->execute(array(":usuario" => $user, ":password" => $password));
+        foreach ($consulta as $fila) { //ENTRA SOLO SI EXISTE EL USUARIO Y CONTRASEÑA
+            if ($fila["Usuario"] == $user && $fila["Password"] == $password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
 
+function ComprobarRol($user) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("SELECT Rol from usuarios WHERE usuario=:usuario");
+        $consulta->execute(array(":usuario" => $user));
+        foreach ($consulta as $row) {
+            return $row["Rol"];  
+        }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
