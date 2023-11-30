@@ -22,6 +22,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="us" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="true">USUARIOS</button>
                     <button class="nav-link" id="cl" data-bs-toggle="tab" data-bs-target="#clases" type="button" role="tab" aria-controls="clases" aria-selected="false">CLASES</button>
+                    <h1 style="text-align:end; width: 87%">Bienvenido al usuario <?php echo $_SESSION["user"]?> </h1>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios" tabindex="0">
