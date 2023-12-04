@@ -37,3 +37,13 @@ function ComprobarRol($user) {
         return $ex->getMessage();
     }
 }
+
+function borrarCampo($tabla,$identificador){
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("DELETE FROM $tabla WHERE $identificador=:identificador");
+        $consulta->execute(array(":identificador" => $identificador));
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
