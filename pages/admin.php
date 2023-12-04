@@ -3,7 +3,9 @@ session_start();
 if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
     header("Location:../index.php");
 }
+include("funciones.php");
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -22,7 +24,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="us" data-bs-toggle="tab" data-bs-target="#usuarios" type="button" role="tab" aria-controls="usuarios" aria-selected="true">USUARIOS</button>
                     <button class="nav-link" id="cl" data-bs-toggle="tab" data-bs-target="#clases" type="button" role="tab" aria-controls="clases" aria-selected="false">CLASES</button>
-                    <h1 style="text-align:end; width: 87%">Bienvenido al usuario <?php echo $_SESSION["user"]?> </h1>
+                    <h1 style="text-align:end; width: 87%">Bienvenido al usuario <?php echo $_SESSION["user"] ?> </h1>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios" tabindex="0">
@@ -32,7 +34,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                 <?php
                                 try {
                                     //Se crea la conexión con la base de datos
-                                    include("funciones.php");
+//                                    include("funciones.php");
                                     $bd = ConectarBd();
                                     //Se construye la consulta y se guarda en una variable
                                     $consulta = $bd->prepare("SELECT * from usuarios");
@@ -65,9 +67,9 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td>" . $user["Rol"] . "</td>";
                                                 echo "<td>" . $user["Usuario"] . "</td>";
                                                 echo "<td>" . $user["Password"] . "</td>";
-                                                echo "<td><a href='borrar?dni=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='borrar?tabla=usuarios&?dni=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
                                                 echo "<td><a href='formulario_actualizar.php?dni=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
-                                                
+
                                                 echo "</tr>";
                                             }
                                             ?>
@@ -88,46 +90,60 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                     <div class="container mt-5">
                         <div class="row"> 
                             <div class="col-md-12">
-                                <h1 style="text-align:center">CLASES DEL GYM</h1>
-                                <table class="table" >
-                                    <thead class="table-primary" >
-                                        <tr>
-                                            <th>Dni</th>
-                                            <th>Nombre</th>
-                                            <th>Apellidos</th>
-                                            <th>Telefono</th>
-                                            <th>Rol</th>
-                                            <th>Usuario</th>
-                                            <th>Contraseña</th>
-                                            <th>Borrar</th>
-                                            <th>Actualizar</th>
-                                        </tr>
-                                    </thead>
+                                <?php
+                                try {
+                                    //Se crea la conexión con la base de datos
+//                                    include("funciones.php");
+                                    $bd2 = ConectarBd();
+                                    //Se construye la consulta y se guarda en una variable
+                                    $consulta2 = $bd2->prepare("SELECT * from clases");
+                                    $consulta2->execute();
+//                                    ?>
+                                    <h1 style="text-align:center">CLASES DEL GYM</h1>
+                                    <table class="table" >
+                                        <thead class="table-primary" >
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Hora</th>
+                                                <th>Lugar</th>
+                                                <th>Pista</th>
+                                                <th>Borrar</th>
+                                                <th>Actualizar</th>
+                                            </tr>
+                                        </thead>
 
-                                    <tbody>
-                                        <?php
-                                        foreach ($consulta as $user) {
-                                            echo "<tr>";
-                                            echo "<td>" . $user["DNI"] . "</td>";
-                                            echo "<td>" . $user["Nombre"] . "</td>";
-                                            echo "<td>" . $user["Apellidos"] . "</td>";
-                                            echo "<td>" . $user["Telefono"] . "</td>";
-                                            echo "<td>" . $user["Rol"] . "</td>";
-                                            echo "<td>" . $user["Usuario"] . "</td>";
-                                            echo "<td>" . $user["Password"] . "</td>";
-                                            echo "<td><a href='borrar.php?dni=" . $user["DNI"] . "'" . ">Borrar</a></td>";
-                                            echo "<td><a href='formulario_actualizar.php?dni=" . $user["DNI"] . "'" . ">Actualizar</a></td>";
-                                            echo "</tr>";
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>  
-                    </div>
+                                        <tbody>
+                                            <?php
+                                            foreach ($consulta2 as $clase) {
+                                                echo "<tr>";
+                                                echo "<td>" . $clase["ID"] . "</td>";
+                                                echo "<td>" . $clase["Nombre"] . "</td>";
+                                                echo "<td>" . $clase["Hora"] . "</td>";
+                                                echo "<td>" . $clase["Lugar"] . "</td>";
+                                                echo "<td>" . $clase["Pista"] . "</td>";
+                                                echo "<td><a href='borrar?tabla=clases&?dni=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='formulario_actualizar.php?dni=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
+
+                                                echo "</tr>";
+                                           }
+                                           ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php
+                               //Se cierra la conexión
+                                $bd2 = null;
+                            } catch (Exception $e) {
+                                echo "Error con la base de datos: " . $e->getMessage();
+                            }
+                            ?>
+                        </div>
+                    </div>  
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
 </html>
