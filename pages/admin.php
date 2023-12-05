@@ -67,7 +67,7 @@ include("funciones.php");
                                                 echo "<td>" . $user["Rol"] . "</td>";
                                                 echo "<td>" . $user["Usuario"] . "</td>";
                                                 echo "<td>" . $user["Password"] . "</td>";
-                                                echo "<td><a href='borrar.php?tabla=usuarios&identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='borrar.php?tabla=usuarios&campo=DNI&identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
                                                 echo "<td><a href='formulario_actualizar.php?identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
@@ -122,7 +122,7 @@ include("funciones.php");
                                                 echo "<td>" . $clase["Hora"] . "</td>";
                                                 echo "<td>" . $clase["Lugar"] . "</td>";
                                                 echo "<td>" . $clase["Pista"] . "</td>";
-                                                echo "<td><a href='borrar.php?tabla=clases&identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='borrar.php?tabla=clases&campo=ID&identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
                                                 echo "<td><a href='formulario_actualizar.php?identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";

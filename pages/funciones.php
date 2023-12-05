@@ -38,10 +38,10 @@ function ComprobarRol($user) {
     }
 }
 
-function borrarCampo($tabla,$identificador){
+function borrarCampo($tabla,$campo,$identificador){
     try {
         $bd = ConectarBd();
-        $consulta = $bd->prepare("DELETE FROM $tabla WHERE $identificador=:identificador");
+        $consulta = $bd->prepare("DELETE FROM $tabla WHERE $campo=:identificador");
         $consulta->execute(array(":identificador" => $identificador));
     } catch (Exception $ex) {
         return $ex->getMessage();
