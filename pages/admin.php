@@ -1,9 +1,14 @@
 <?php
 session_start();
-if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
-    header("Location:../index.php");
-}
 include("funciones.php");
+if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
+   header("Location:../index.php");
+}else{
+    if(ComprobarRol($_SESSION["user"])==2){
+        header("Location:users.php");
+    }
+}
+
 ?>
 
 
@@ -75,6 +80,7 @@ include("funciones.php");
                                             ?>
                                         </tbody>
                                     </table>
+                                    <button type="button" class="btn btn-primary"><a href="crearUsuario.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR USUARIO</a></button>
                                 </div>
                                 <?php
                                 //Se cierra la conexión
@@ -130,6 +136,7 @@ include("funciones.php");
                                            ?>
                                         </tbody>
                                     </table>
+                                    <button type="button" class="btn btn-primary"><a href="crearClase.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR CLASE</a></button>
                                 </div>
                                 <?php
                                //Se cierra la conexión

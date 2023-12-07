@@ -31,18 +31,31 @@ function ComprobarRol($user) {
         $consulta = $bd->prepare("SELECT Rol from usuarios WHERE usuario=:usuario");
         $consulta->execute(array(":usuario" => $user));
         foreach ($consulta as $row) {
-            return $row["Rol"];  
+            return $row["Rol"];
         }
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
 }
 
-function borrarCampo($tabla,$campo,$identificador){
+function borrarCampo($tabla, $campo, $identificador) {
     try {
         $bd = ConectarBd();
         $consulta = $bd->prepare("DELETE FROM $tabla WHERE $campo=:identificador");
         $consulta->execute(array(":identificador" => $identificador));
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
+
+function crearUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario, $password) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("INSERT INTO usuarios (DNI, Nombre, Apellidos, Telefono, Rol, Usuario, Password)
+                                  VALUES
+                                  (:dni, :nombre, :apellidos, :telefono, :rol, :usuario, :password)");
+        $consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono,
+                                  ":rol" => $rol, ":usuario" => $usuario, ":password" => $password));
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
