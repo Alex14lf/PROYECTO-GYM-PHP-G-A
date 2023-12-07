@@ -9,7 +9,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>crearClase</title>
+        <title>crearUsuario</title>
         <link rel="stylesheet" href="css/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
@@ -17,32 +17,24 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
         <div class="container">
             <form>
                 <div class="mb-3 col-lg-6">
-                    <label for="dni" class="form-label">DNI</label>
-                    <input type="text" class="form-control" id="dni">
+                    <label for="id" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="id">
                 </div>
                 <div class="mb-3 col-lg-6">
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="apellidos" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellidos">
+                    <label for="hora" class="form-label">Hora</label>
+                    <input type="text" class="form-control" id="hora">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="telefono" class="form-label">Telefono</label>
-                    <input type="text" class="form-control" id="telefono">
+                    <label for="lugar" class="form-label">Lugar</label>
+                    <input type="text" class="form-control" id="lugar">
                 </div>
                 <div class="mb-3 col-lg-6">
-                    <label for="rol" class="form-label">Rol</label>
-                    <input type="number" class="form-control" id="rol">
-                </div>
-                <div class="mb-3 col-lg-6">
-                    <label for="usuario" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" id="usuario">
-                </div>
-                <div class="mb-3 col-lg-6">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input type="text" class="form-control" id="password">
+                    <label for="pista" class="form-label">Pista</label>
+                    <input type="number" class="form-control" id="pista">
                 </div>
                 <button type="submit" class="btn btn-primary">REGISTRAR</button>
             </form>
