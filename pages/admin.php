@@ -81,7 +81,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                             ?>
                                         </tbody>
                                     </table>
-                                    <button type="button" class="btn btn-primary"><a href="crearUsuario.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR USUARIO</a></button>
+                                    <button type="button" class="btn btn-primary"><a href="crearUsuarioForm.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR USUARIO</a></button>
                                 </div>
                                 <?php
                                 //Se cierra la conexión
