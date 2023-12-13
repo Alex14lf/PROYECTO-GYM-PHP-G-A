@@ -55,7 +55,20 @@ function crearUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario, $pas
                                   VALUES
                                   (:dni, :nombre, :apellidos, :telefono, :rol, :usuario, :password)");
         $consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono,
-                                  ":rol" => $rol, ":usuario" => $usuario, ":password" => $password));
+            ":rol" => $rol, ":usuario" => $usuario, ":password" => $password));
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
+
+function obtenerDni($user, $password) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("SELECT DNI from usuarios WHERE usuario=:usuario AND password=:password");
+        $consulta->execute(array(":usuario" => $user, ":password" => $password));
+        foreach ($consulta as $row) {
+            return $row["DNI"];
+        }
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
