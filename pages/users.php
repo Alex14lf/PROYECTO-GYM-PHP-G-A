@@ -22,16 +22,19 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
         <div class="container mt-5">
             <div class="row"> 
                 <div class="col-md-12">
+                    <div class="col-md-12">
+                        <h1>Bienvenido al usuario <?php echo $_SESSION["user"] ?> </h1>
+                        <button type="button" class="btn btn-warning"><a href="cerrarSesion.php" class="text-white text-decoration-none">Cerrar Sesión</a></button>
+                    </div>
                     <?php
                     try {
-                        $dni=obtenerDni($_SESSION["user"], $_SESSION["password"]);
+                        $dni = obtenerDni($_SESSION["user"], $_SESSION["password"]);
                         $bd = ConectarBd();
-                        $consulta = $bd->prepare("SELECT clases.*
-                                                    FROM usuarios
-                                                    JOIN usuarios_clases ON usuarios.dni = usuarios_clases.dni
-                                                    JOIN clases ON usuarios_clases.id_clase = clases.id
-                                                    WHERE usuarios.dni = ".$dni.";");
-                        $consulta->execute();
+                        $consulta = $bd->prepare("SELECT c.Nombre , c.Hora, c.Lugar, c.Pista, uc.ID
+                                                    FROM clases c
+                                                    JOIN usuarios_clases uc ON c.ID = uc.ID_CLASE
+                                                    WHERE uc.DNI = :dni;");
+                        $consulta->execute(array(":dni" => $dni));
                         ?>
                         <h1 style="text-align:center">CLASES DE <?php echo strtoupper($_SESSION["user"]) ?> </h1>
                         <table class="table" >
@@ -53,7 +56,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                     echo "<td>" . $dato["Hora"] . "</td>";
                                     echo "<td>" . $dato["Lugar"] . "</td>";
                                     echo "<td>" . $dato["Pista"] . "</td>";
-                                    echo "<td><a href='borrar.php?tabla=usuarios&campo=DNI&identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                    echo "<td><a href='borrar.php?tabla=usuarios_clases&campo=ID&identificador=" . $dato["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
 
                                     echo "</tr>";
                                 }

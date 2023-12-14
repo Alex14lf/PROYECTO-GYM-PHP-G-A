@@ -137,7 +137,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                            ?>
                                         </tbody>
                                     </table>
-                                    <button type="button" class="btn btn-primary"><a href="crearClase.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR CLASE</a></button>
+                                    <button type="button" class="btn btn-primary"><a href="crearClaseForm.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR CLASE</a></button>
                                 </div>
                                 <?php
                                //Se cierra la conexión

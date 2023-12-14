@@ -60,6 +60,17 @@ function crearUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario, $pas
         return $ex->getMessage();
     }
 }
+function crearClase($id, $nombre, $hora, $lugar, $pista) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("INSERT INTO clases (ID, Nombre, Hora, Lugar, Pista)
+                                  VALUES
+                                  (:id, :nombre, :hora, :lugar, :pista)");
+        $consulta->execute(array(":id" => $id, ":nombre" => $nombre, ":hora" =>$hora, ":lugar" => $lugar, ":pista" => $pista));
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
 
 function obtenerDni($user, $password) {
     try {
