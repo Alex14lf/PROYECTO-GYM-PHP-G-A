@@ -95,3 +95,12 @@ function actualizarUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario,
         return $ex->getMessage();
     }
 }
+function actualizarClase($id, $nombre, $hora, $lugar, $pista) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("UPDATE clases SET nombre=:nombre,hora=:hora,lugar=:lugar,pista=:pista WHERE id=:id");
+        $consulta->execute(array(":id" => $id, ":nombre" => $nombre, ":hora" => $hora, ":lugar" => $lugar,":pista" => $pista));
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}

@@ -130,7 +130,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td>" . $clase["Lugar"] . "</td>";
                                                 echo "<td>" . $clase["Pista"] . "</td>";
                                                 echo "<td><a href='borrar.php?tabla=clases&campo=ID&identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
-                                                echo "<td><a href='formulario_actualizar.php?identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
+                                                echo "<td><a href='actualizarClaseForm.php?identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
                                            }
