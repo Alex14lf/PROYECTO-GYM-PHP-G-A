@@ -74,7 +74,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td>" . $user["Usuario"] . "</td>";
                                                 echo "<td>" . $user["Password"] . "</td>";
                                                 echo "<td><a href='borrar.php?tabla=usuarios&campo=DNI&identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
-                                                echo "<td><a href='formulario_actualizar.php?identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
+                                                echo "<td><a href='actualizarUsuarioForm.php?identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
                                             }

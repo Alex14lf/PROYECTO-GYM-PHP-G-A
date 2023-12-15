@@ -60,13 +60,14 @@ function crearUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario, $pas
         return $ex->getMessage();
     }
 }
+
 function crearClase($id, $nombre, $hora, $lugar, $pista) {
     try {
         $bd = ConectarBd();
         $consulta = $bd->prepare("INSERT INTO clases (ID, Nombre, Hora, Lugar, Pista)
                                   VALUES
                                   (:id, :nombre, :hora, :lugar, :pista)");
-        $consulta->execute(array(":id" => $id, ":nombre" => $nombre, ":hora" =>$hora, ":lugar" => $lugar, ":pista" => $pista));
+        $consulta->execute(array(":id" => $id, ":nombre" => $nombre, ":hora" => $hora, ":lugar" => $lugar, ":pista" => $pista));
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
@@ -80,6 +81,16 @@ function obtenerDni($user, $password) {
         foreach ($consulta as $row) {
             return $row["DNI"];
         }
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
+
+function actualizarUsuario($dni, $nombre, $apellidos, $telefono, $rol, $usuario, $password) {
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("UPDATE usuarios SET nombre=:nombre,apellidos=:apellidos,telefono=:telefono,rol=:rol,usuario=:usuario,password=:password WHERE dni=:dni");
+        $consulta->execute(array(":dni" => $dni, ":nombre" => $nombre, ":apellidos" => $apellidos, ":telefono" => $telefono,":rol" => $rol, ":usuario" => $usuario, ":password" => $password));
     } catch (Exception $ex) {
         return $ex->getMessage();
     }
