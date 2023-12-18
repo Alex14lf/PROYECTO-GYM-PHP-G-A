@@ -104,3 +104,34 @@ function actualizarClase($id, $nombre, $hora, $lugar, $pista) {
         return $ex->getMessage();
     }
 }
+
+function mostrarClasesDisponibles($dni){
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("SELECT ID,Nombre
+                                    FROM clases c
+                                    WHERE c.ID NOT IN (
+                                        SELECT uc.ID_CLASE
+                                        FROM usuarios_clases uc
+                                        WHERE uc.DNI = :dni
+                                        );");
+        $consulta->execute(array(":dni" => $dni));
+        return $consulta;
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+}
+
+function apuntarseClase($clase,$dni){
+    try {
+        $bd = ConectarBd();
+        $consulta = $bd->prepare("INSERT INTO usuarios_clases (DNI, ID_CLASE)
+                                  VALUES
+                                  (:DNI, :ID_CLASE);");
+        $consulta->execute(array(":DNI" => $dni,":ID_CLASE" => $clase));
+        return $consulta;
+    } catch (Exception $ex) {
+        return $ex->getMessage();
+    }
+    
+}
