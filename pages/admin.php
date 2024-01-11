@@ -2,13 +2,12 @@
 session_start();
 include("funciones.php");
 if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
-   header("Location:../index.php");
-}else{
-    if(ComprobarRol($_SESSION["user"])==2){
+    header("Location:../index.php");
+} else {
+    if (ComprobarRol($_SESSION["user"]) == 2) {
         header("Location:users.php");
     }
 }
-
 ?>
 
 
@@ -105,7 +104,8 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                     //Se construye la consulta y se guarda en una variable
                                     $consulta2 = $bd2->prepare("SELECT * from clases");
                                     $consulta2->execute();
-//                                    ?>
+//                                    
+                                    ?>
                                     <h1 style="text-align:center">CLASES DEL GYM</h1>
                                     <table class="table" >
                                         <thead class="table-primary" >
@@ -133,14 +133,14 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td><a href='actualizarClaseForm.php?identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
-                                           }
-                                           ?>
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                     <button type="button" class="btn btn-primary"><a href="crearClaseForm.php"  style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">CREAR CLASE</a></button>
                                 </div>
                                 <?php
-                               //Se cierra la conexión
+                                //Se cierra la conexión
                                 $bd2 = null;
                             } catch (Exception $e) {
                                 echo "Error con la base de datos: " . $e->getMessage();
