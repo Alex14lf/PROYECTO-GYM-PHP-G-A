@@ -1,13 +1,20 @@
 <?php
+// Obtener la fecha y hora actual
+setlocale(LC_ALL, "es_ES", 'Spanish_Spain', 'Spanish');
+$fecha_actual = strftime("%A %e de %B de %Y");
+$fecha_actual = ucfirst($fecha_actual); // Convertir el primer carácter a mayúscula
+// Verificar y establecer la cookie "fecha_cookie"
 if (!isset($_COOKIE["fecha_cookie"])) {
-    // Obtener la fecha y hora actual
-    $fecha_actual = date("Y-m-d H:i:s");
-    setcookie("fecha_cookie", $fecha_actual, time() + 86400, "/");
+    setcookie("fecha_cookie", $fecha_actual, 0, "/");
+    header("Location: ".$_SERVER['PHP_SELF']);
 }
+
 if (!isset($_COOKIE["visitas"])) {
     // Generar un número aleatorio
     $numeroAleatorio = mt_rand(1, 100);
-    setcookie("visitas", $numeroAleatorio, time() + 86400, "/");
+    setcookie("visitas", $numeroAleatorio, 0, "/");
+    header("Location: ".$_SERVER['PHP_SELF']);
+    
 }
 ?>
 <!DOCTYPE html>
@@ -63,7 +70,7 @@ if (!isset($_COOKIE["visitas"])) {
                                         // Mostrar la fecha almacenada
                                         echo "La fecha actual es: " . $_COOKIE["fecha_cookie"];
                                         echo "<br>";
-                                        echo "Uusarios activos en la web: " . $_COOKIE["visitas"];
+                                        echo "Usarios visitando la web: " .$_COOKIE["visitas"] ;
                                         ?>
                                     </div>
                                 </div>

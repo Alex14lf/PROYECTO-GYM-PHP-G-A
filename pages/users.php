@@ -56,7 +56,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                     echo "<td>" . $dato["Hora"] . "</td>";
                                     echo "<td>" . $dato["Lugar"] . "</td>";
                                     echo "<td>" . $dato["Pista"] . "</td>";
-                                    echo "<td><a href='borrar.php?tabla=usuarios_clases&campo=ID&identificador=" . $dato["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
+                                    echo "<td><a href='borrar.php?tabla=usuarios_clases&campo=ID&identificador=" . $dato["ID"] . "'" . "><img alt='' src='../assets/images/eliminar.png'></a></td>";
 
                                     echo "</tr>";
                                 }

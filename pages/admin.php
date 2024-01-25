@@ -30,6 +30,7 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                     <button class="nav-link" id="cl" data-bs-toggle="tab" data-bs-target="#clases" type="button" role="tab" aria-controls="clases" aria-selected="false">CLASES</button>
                     <h1 style="text-align:end; width: 60%">Bienvenido al usuario <?php echo $_SESSION["user"] ?> </h1>
                     <button type="button" class="btn btn-warning"><a href="cerrarSesion.php" class="text-white text-decoration-none">Cerrar Sesión</a></button>
+                </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="usuarios" role="tabpanel" aria-labelledby="usuarios" tabindex="0">
@@ -72,8 +73,8 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td>" . $user["Rol"] . "</td>";
                                                 echo "<td>" . $user["Usuario"] . "</td>";
                                                 echo "<td>" . $user["Password"] . "</td>";
-                                                echo "<td><a href='borrar.php?tabla=usuarios&campo=DNI&identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
-                                                echo "<td><a href='actualizarUsuarioForm.php?identificador=" . $user["DNI"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
+                                                echo "<td><a href='borrar.php?tabla=usuarios&campo=DNI&identificador=" . $user["DNI"] . "'" . "><img alt='' src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='actualizarUsuarioForm.php?identificador=" . $user["DNI"] . "'" . "><img alt='' src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
                                             }
@@ -129,8 +130,8 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                                                 echo "<td>" . $clase["Hora"] . "</td>";
                                                 echo "<td>" . $clase["Lugar"] . "</td>";
                                                 echo "<td>" . $clase["Pista"] . "</td>";
-                                                echo "<td><a href='borrar.php?tabla=clases&campo=ID&identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/eliminar.png'></a></td>";
-                                                echo "<td><a href='actualizarClaseForm.php?identificador=" . $clase["ID"] . "'" . "><img src='../assets/images/actualizar.png'></a></td>";
+                                                echo "<td><a href='borrar.php?tabla=clases&campo=ID&identificador=" . $clase["ID"] . "'" . "><img alt='' src='../assets/images/eliminar.png'></a></td>";
+                                                echo "<td><a href='actualizarClaseForm.php?identificador=" . $clase["ID"] . "'" . "><img alt='' src='../assets/images/actualizar.png'></a></td>";
 
                                                 echo "</tr>";
                                             }
@@ -151,7 +152,6 @@ if (!isset($_SESSION["user"]) && !isset($_SESSION["password"])) {
                 </div>
             </div>
         </div>
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
